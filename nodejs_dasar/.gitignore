@@ -1,0 +1,10 @@
+/.idea
+/.idea/modules.xml
+/.idea/nodejs_pzn.iml
+/.idea/vcs.xml
+/.idea/.gitignore
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
