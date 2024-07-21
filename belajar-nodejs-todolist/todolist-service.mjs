@@ -22,9 +22,9 @@ export class TodolistService {
     createTodo(req, res) {
         req.on('data', (data) => {
             const body = JSON.parse(data.toString());
-            this.todolist.push(body.todo);
-            res.write(this.getJsonTodoList());
+            thi            res.write(this.getJsonTodoList());
             res.end();
+            s.todolist.push(body.todo);
         })
     }
 
@@ -40,4 +40,17 @@ export class TodolistService {
             res.end();
         })
     };
+
+    deleteTodo(req, res) {
+        req.on('data', (data) => {
+            const body = JSON.parse(data.toString());
+
+            if (this.todolist[body.id]) {
+                this.todolist.splice(body.id, 1);
+            }
+
+            res.write(this.getJsonTodoList());
+            res.end();
+        })
+    }
 }
