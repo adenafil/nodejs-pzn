@@ -17,6 +17,7 @@
     "nodejs",
     "npm"
   ],
+  "type": "module",
   "author": "ade nafil firmansah",
   "license": "ISC"
 }
