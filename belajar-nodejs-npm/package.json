@@ -1,0 +1,17 @@
+{
+  "name": "belajar-nodejs-npm",
+  "version": "1.0.0",
+  "description": "Belajar NodeJS NPM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "programmerzamannow",
+    "pzn",
+    "nodejs",
+    "npm"
+  ],
+  "author": "ade nafil firmansah",
+  "license": "ISC"
+}
