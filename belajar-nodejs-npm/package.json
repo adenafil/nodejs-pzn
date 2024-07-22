@@ -9,7 +9,11 @@
     "url": "https://github.com/adenafil/nodejs-pzn.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "node index.js",
+    "prestart": "echo 'Before App Start'",
+    "start": "node index.js",
+    "poststart": "echo 'After App Start'"
   },
   "keywords": [
     "programmerzamannow",
