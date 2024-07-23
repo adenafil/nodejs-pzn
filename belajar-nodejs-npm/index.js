@@ -1,4 +1,4 @@
-import {writeToFile} from "./write.js";
+import {writeToFile} from "belajar-nodejs-npm/write";
 
 writeToFile("hello.log", "Hello Ade Nafil Firmansah!")
 
