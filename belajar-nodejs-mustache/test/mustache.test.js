@@ -24,3 +24,12 @@ test("Tags", () => {
     console.log(data);
     expect(data).toEqual("Hello, Ade and hobby is </p>Mengkodong Mengkagtur</p>");
 })
+
+test("Nested Object", () => {
+    const data = Mustache.render("Hello, {{person.name}}", {
+        person: {
+            name: "Ade",
+        }
+    })
+    expect(data).toEqual("Hello, Ade");
+})
