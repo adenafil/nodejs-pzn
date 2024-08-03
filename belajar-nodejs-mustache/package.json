@@ -35,7 +35,7 @@
     "babel-jest": "^28.1.0",
     "jest": "^28.1.0",
     "@types/jest": "^28.1.0",
-    "@type/mustache": "^4.2.0"
+    "@types/mustache": "^4.2.0"
   },
   "dependencies": {
     "mustache": "^4.2.0"
