@@ -15,3 +15,12 @@ test("Menggunakan Mustache Cache", () => {
     })
     expect(data).toEqual("Hello, Ade");
 })
+
+test("Tags", () => {
+    const data = Mustache.render("Hello, {{name}} and hobby is {{{hobby}}}", {
+        name: "Ade",
+        hobby: "</p>Mengkodong Mengkagtur</p>"
+    });
+    console.log(data);
+    expect(data).toEqual("Hello, Ade and hobby is </p>Mengkodong Mengkagtur</p>");
+})
