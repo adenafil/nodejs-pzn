@@ -121,3 +121,16 @@ test("Functions", async () => {
 
     expect(data).toContain("ade".toUpperCase());
 })
+
+test("Comment", async () => {
+    const helloTemplate = await fs.readFile("./templates/comment.mustache")
+        .then((data) => data.toString());
+    ;
+    const data = Mustache.render(helloTemplate, {
+        title: "Ade",
+    })
+
+    console.info(data);
+    expect(data).toContain("Ade");
+    expect(data).not.toContain("komentar");
+});
