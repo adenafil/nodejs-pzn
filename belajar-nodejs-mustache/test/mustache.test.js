@@ -105,5 +105,19 @@ test("List Object", async () => {
     expect(data).toContain("Ade");
 })
 
+test("Functions", async () => {
+    const parameter = {
+        name: "Ade",
+        upper: () => {
+            return (text, render) => {
+                return render(text).toUpperCase();
+            }
+        }
+    }
 
+    const data = Mustache.render("Hello {{#upper}}{{name}}{{/upper}}", parameter);
 
+    console.log(data);
+
+    expect(data).toContain("ade".toUpperCase());
+})
