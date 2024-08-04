@@ -89,4 +89,21 @@ test("List", async () => {
     expect(data).toContain("Catur");
 })
 
+test("List Object", async () => {
+    const helloTemplate = await fs.readFile("./templates/students.mustache")
+        .then((data) => data.toString());
+
+    const data = Mustache.render(helloTemplate, {
+        students: [
+            {name: "Ade", value: 100},
+            {name: "Nafil", value: 100},
+        ]
+    })
+
+    console.log(data);
+
+    expect(data).toContain("Ade");
+})
+
+
 
