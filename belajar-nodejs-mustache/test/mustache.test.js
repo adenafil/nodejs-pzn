@@ -134,3 +134,23 @@ test("Comment", async () => {
     expect(data).toContain("Ade");
     expect(data).not.toContain("komentar");
 });
+
+test("Partials", async () => {
+    const header = await fs.readFile("./templates/header.mustache")
+        .then((data) => data.toString());
+    const footer = await fs.readFile("./templates/footer.mustache")
+        .then((data) => data.toString());
+    const content = await fs.readFile("./templates/content.mustache")
+        .then((data) => data.toString());
+
+    const data = Mustache.render(content, {
+        title: "Ade",
+        content: "Ade",
+    }, {
+        header: header,
+        footer: footer
+    })
+
+    console.info(data);
+    expect(data).toContain("Ade");
+})
