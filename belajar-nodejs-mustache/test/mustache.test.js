@@ -74,3 +74,19 @@ test("Section Shown", async () => {
     expect(data).toContain("Ade");
 })
 
+test("List", async () => {
+    const helloTemplate = await fs.readFile("./templates/hobbies.mustache")
+        .then((data) => data.toString());
+
+    const data = Mustache.render(helloTemplate, {
+        hobbies: [
+            "Catur", "Programming", "Sejarah"
+        ]
+    })
+
+    console.log(data);
+
+    expect(data).toContain("Catur");
+})
+
+
