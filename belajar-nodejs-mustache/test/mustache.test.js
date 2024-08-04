@@ -48,7 +48,7 @@ test("Mustache File", async () => {
     expect(data).toContain("Ade");
 });
 
-test("Section Not Shown", async () => {
+test("Inverted Section", async () => {
     const helloTemplate = await fs.readFile("./templates/person.mustache")
         .then((data) => data.toString());
 
@@ -56,7 +56,7 @@ test("Section Not Shown", async () => {
 
     console.log(data);
 
-    expect(data).not.toContain("Ade");
+    expect(data).toContain("Hello Guest");
 })
 
 test("Section Shown", async () => {
