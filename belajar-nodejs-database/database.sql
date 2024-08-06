@@ -30,4 +30,8 @@ value ('P0001', 'A', 1000, 100, 'K1'),
 ('P0004', 'D', 4000, 400, 'K2'),
 ('P0005', 'E', 5000, 500, 'K2');
 
-select * from products;
+create table categories (
+    id int not null auto_increment,
+    name varchar(100) not null,
+    primary key(id)
+) engine InnoDB;
