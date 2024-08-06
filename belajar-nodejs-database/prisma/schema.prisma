@@ -25,5 +25,13 @@ model customer {
   phone String @unique
 
   @@map("customers")
+}
 
+model Product {
+  id String @id
+  name String
+  price Int
+  stock Int
+  category String
+  @@map("products")
 }
