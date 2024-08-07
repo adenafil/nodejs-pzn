@@ -18,13 +18,15 @@ model sample {
   name String
 }
 
-model customer {
-  id String @id @db.VarChar(100)
-  name String
-  email String @unique
-  phone String @unique
-  wallet Wallet?
+model Customer {
+  id       String    @id @db.VarChar(100)
+  name     String    @db.VarChar(100)
+  email    String    @unique @db.VarChar(100)
+  phone    String    @unique @db.VarChar(100)
+  wallet   Wallet?
   comments Comment[]
+  likes    Like[]
+  loves    Product[] @relation("loves")
 
   @@map("customers")
 }
@@ -33,17 +35,20 @@ model Wallet {
   id String @id @db.VarChar(100)
   balance Int @db.Int
   customer_id String @unique @db.VarChar(100)
-  customer customer @relation(fields: [customer_id], references: [id])
+  customer Customer @relation(fields: [customer_id], references: [id])
 
   @@map("wallet")
 }
 
 model Product {
-  id String @id @db.VarChar(100)
-  name String @db.VarChar(100)
-  price Int @db.Int
-  stock Int @db.SmallInt
-  category String @db.VarChar(100)
+  id       String     @id @db.VarChar(100)
+  name     String     @db.VarChar(100)
+  price    Int        @db.Int
+  stock    Int        @db.SmallInt
+  category String     @db.VarChar(100)
+  likedBy  Like[]
+  lovedBy  Customer[] @relation("loves")
+
   @@map("products")
 }
 
@@ -58,7 +63,18 @@ model Comment {
   title String @db.VarChar(100)
   description String? @db.VarChar(100)
   customer_id String
-  customer customer @relation(fields: [customer_id], references: [id])
+  customer Customer @relation(fields: [customer_id], references: [id])
 
   @@map("comments")
+}
+
+model Like {
+  customer_id String @db.VarChar(100)
+  product_id String @db.VarChar(100)
+  customer Customer @relation(fields: [customer_id], references: [id])
+  product Product @relation(fields: [product_id], references: [id])
+
+  @@id([customer_id, product_id])
+  @@map("likes")
+
 }

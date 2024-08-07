@@ -55,3 +55,21 @@ create table comments
     primary key(id),
     constraint comment_customer_id_fk foreign key(customer_id) references customers(id)
 ) engine = InnoDB;
+
+create table likes
+(
+    customer_id varchar(100) not null,
+    product_id varchar(100) not null,
+    primary key(customer_id, product_id),
+    constraint likes_customer_id_fk foreign key(customer_id) references customers(id),
+    constraint likes_product_id_fk foreign key(product_id) references products(id)
+) engine = InnoDB;
+
+create table _loves
+(
+    A varchar(100) not null,
+    B varchar(100) not null,
+    primary key (A, B),
+    constraint customer_loves_fk foreign key (A) references customers (id),
+    constraint product_loves_fk foreign key (B) references products (id)
+) engine innodb;
