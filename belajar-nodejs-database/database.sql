@@ -45,3 +45,13 @@ create table wallet
     constraint wallet_customer_id_fk foreign key(customer_id) references customers(id),
     constraint wallet_customer_id_unique unique(customer_id)
 ) engine = InnoDB;
+
+create table comments
+(
+    id int not null auto_increment,
+    customer_id varchar(100) not null,
+    title varchar(100) not null,
+    description text,
+    primary key(id),
+    constraint comment_customer_id_fk foreign key(customer_id) references customers(id)
+) engine = InnoDB;
