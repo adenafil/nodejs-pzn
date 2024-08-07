@@ -19,12 +19,22 @@ model sample {
 }
 
 model customer {
-  id String @id
+  id String @id @db.VarChar(100)
   name String
   email String @unique
   phone String @unique
+  wallet Wallet?
 
   @@map("customers")
+}
+
+model Wallet {
+  id String @id @db.VarChar(100)
+  balance Int @db.Int
+  customer_id String @unique @db.VarChar(100)
+  customer customer @relation(fields: [customer_id], references: [id])
+
+  @@map("wallet")
 }
 
 model Product {
@@ -36,8 +46,10 @@ model Product {
   @@map("products")
 }
 
+
 model Category {
   id Int @id @default(autoincrement())
   name String @db.VarChar(100)
   @@map("categories")
 }
+

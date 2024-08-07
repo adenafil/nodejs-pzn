@@ -35,3 +35,13 @@ create table categories (
     name varchar(100) not null,
     primary key(id)
 ) engine InnoDB;
+
+create table wallet
+(
+    id varchar(100) not null,
+    balance int not null,
+    customer_id varchar(100) not null,
+    primary key(id),
+    constraint wallet_customer_id_fk foreign key(customer_id) references customers(id),
+    constraint wallet_customer_id_unique unique(customer_id)
+) engine = InnoDB;
