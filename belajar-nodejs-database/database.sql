@@ -79,3 +79,8 @@ create database belajar_nodejs_prisma;
 use belajar_nodejs_prisma;
 
 show tables;
+
+desc sample;
+
+alter table sample
+add column full_description text;
