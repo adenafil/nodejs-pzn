@@ -1,0 +1,26 @@
+{
+  "name": "belajar-nodejs-validation",
+  "version": "1.0.0",
+  "description": "Belajar NodeJS Validation",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  },
+  "author": "Ade Nafil Firmansah",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@babel/preset-env": "^7.25.3",
+    "@types/jest": "^29.5.12",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "joi": "^17.13.3"
+  }
+}
