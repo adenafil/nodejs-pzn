@@ -33,7 +33,8 @@
     <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$PROJECT_DIR$/database.sql" connection-id="77a53899-f275-48d3-9d43-a8f06f7961c0" session-id="MAIN" current-schema="belajar_nodejs_database" />
+    <mapping file-url="file://$PROJECT_DIR$/prisma/migrations/20240808113625_create_all_model/migration.sql" connection-id="77a53899-f275-48d3-9d43-a8f06f7961c0" session-id="MAIN" current-schema="belajar_nodejs_prisma" />
+    <mapping file-url="file://$PROJECT_DIR$/database.sql" connection-id="77a53899-f275-48d3-9d43-a8f06f7961c0" session-id="MAIN" current-schema="belajar_nodejs_prisma" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -57,7 +58,7 @@
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
-          <database value="belajar_nodejs_database" />
+          <database value="belajar_nodejs_prisma" />
           <tns-folder value="" />
           <tns-profile value="" />
           <type value="USER" />

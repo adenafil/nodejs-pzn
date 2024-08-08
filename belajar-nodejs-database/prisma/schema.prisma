@@ -14,8 +14,9 @@ datasource db {
 }
 
 model sample {
-  id   String @id
-  name String
+  id   String @id @db.VarChar(100)
+  name String @db.VarChar(100)
+  description String? @db.Text
 }
 
 model Customer {
@@ -63,7 +64,7 @@ model Comment {
   title String @db.VarChar(100)
   description String? @db.VarChar(100)
   customer_id String
-  customer Customer @relation(fields: [customer_id], references: [id])
+  customer Customer @relation(fields: [customer_id], references: [id], map: "customer_to_comment_fk")
 
   @@map("comments")
 }
