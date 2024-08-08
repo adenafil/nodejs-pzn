@@ -20,6 +20,8 @@ describe("Joi", () => {
 
         const resultIsAdmin = isAdminSchema.validate("false");
         console.info(resultIsAdmin);
+        console.info(typeof resultIsAdmin.value);
+        console.info(typeof resultIsAdmin.error);
 
         const resultPrice = priceSchema.validate(10_000);
         console.info(resultPrice);
