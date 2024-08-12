@@ -265,4 +265,4 @@ describe("DELETE /api/users/logout", function () {
         expect(result.body.data).toBeUndefined();
     });
 
-})
+});
