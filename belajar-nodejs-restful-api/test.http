@@ -1,0 +1,134 @@
+### CREATE ACCOUNT
+POST http://localhost:3000/api/users
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "ade",
+  "password": "rahasia",
+  "name": "ade nafil"
+}
+
+### LOGIN
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "ade",
+  "password": "rahasia"
+}
+
+### GET CURRENT USER DATA
+GET http://localhost:3000/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: 2bbaf0b4-2559-4d01-b85e-0a14d1ab20da
+
+### UPDATE
+PATCH http://localhost:3000/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: 2bbaf0b4-2559-4d01-b85e-0a14d1ab20da
+
+{
+  "name": "ade nafil firmansah"
+}
+
+### DELETE USER
+DELETE http://localhost:3000/api/users/logout
+Content-Type: application/json
+Accept: application/json
+Authorization: 2bbaf0b4-2559-4d01-b85e-0a14d1ab20da
+
+### CREATE CONTACT
+POST http://localhost:3000/api/contacts
+Content-Type: application/json
+Accept: application/json
+Authorization: 2bbaf0b4-2559-4d01-b85e-0a14d1ab20da
+
+{
+  "first_name": "Joko",
+  "last_name": "Morra",
+  "email": "joko@pzn.com",
+  "phone": "1234"
+}
+
+### GET CONTACTS
+GET http://localhost:3000/api/contacts?size=1&page=2
+Content-Type: application/json
+Accept: application/json
+Authorization: 2bbaf0b4-2559-4d01-b85e-0a14d1ab20da
+
+### GET DETAIL CONTACTS
+GET http://localhost:3000/api/contacts/481
+Content-Type: application/json
+Accept: application/json
+Authorization: 2bbaf0b4-2559-4d01-b85e-0a14d1ab20da
+
+### UPDATE
+PUT http://localhost:3000/api/contacts/481
+Content-Type: application/json
+Accept: application/json
+Authorization: 2bbaf0b4-2559-4d01-b85e-0a14d1ab20da
+
+{
+  "first_name": "Rully",
+  "last_name": "Morra",
+  "email": "rully@pzn.com",
+  "phone": "1234"
+
+}
+
+### DELETE CONTACT
+DELETE http://localhost:3000/api/contacts/481
+Content-Type: application/json
+Accept: application/json
+Authorization: 2bbaf0b4-2559-4d01-b85e-0a14d1ab20da
+
+### Create Address
+POST http://localhost:3000/api/contacts/480/addresses
+Content-Type: application/json
+Accept: application/json
+Authorization: 2bbaf0b4-2559-4d01-b85e-0a14d1ab20da
+
+{
+  "street": "Kantor",
+  "city": "Bandung",
+  "province": "DKI JAKARTA",
+  "country": "Indonesia",
+  "postal_code": "1234"
+}
+
+### List Addresses
+GET http://localhost:3000/api/contacts/480/addresses
+Content-Type: application/json
+Accept: application/json
+Authorization: 2bbaf0b4-2559-4d01-b85e-0a14d1ab20da
+
+### GET Addresses
+GET http://localhost:3000/api/contacts/480/addresses/97
+Content-Type: application/json
+Accept: application/json
+Authorization: 2bbaf0b4-2559-4d01-b85e-0a14d1ab20da
+
+### UPDATE Addresses
+PUT http://localhost:3000/api/contacts/480/addresses/97
+Content-Type: application/json
+Accept: application/json
+Authorization: 2bbaf0b4-2559-4d01-b85e-0a14d1ab20da
+
+{
+  "street": "Kantor Bekerja",
+  "city": "Cikarang",
+  "province": "DKI JAKARTA",
+  "country": "Indonesia",
+  "postal_code": "1234"
+}
+
+### Remove Addresses
+DELETE http://localhost:3000/api/contacts/480/addresses/97
+Content-Type: application/json
+Accept: application/json
+Authorization: 2bbaf0b4-2559-4d01-b85e-0a14d1ab20da
+
