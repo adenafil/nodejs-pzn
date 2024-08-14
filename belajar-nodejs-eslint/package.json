@@ -8,5 +8,8 @@
   },
   "author": "Ade Nafil Firmansah",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^9.9.0"
+  }
 }
