@@ -47,5 +47,40 @@ describe("belajar nodejs redis", () => {
         expect(await redis.llen("names")).toBe(1);
 
         redis.del("names");
+    });
+
+    it("should support set data structure", async () => {
+        await redis.sadd("names", "ade");
+        await redis.sadd("names", "ade");
+        await redis.sadd("names", "ade");
+        await redis.sadd("names", "nafil");
+        await redis.sadd("names", "nafil");
+        await redis.sadd("names", "nafil");
+        await redis.sadd("names", "firmansah");
+        await redis.sadd("names", "firmansah");
+        await redis.sadd("names", "firmansah");
+
+        expect(await redis.scard("names")).toBe(3);
+        const names = await redis.smembers("names");
+        expect(names).toEqual(["ade", "nafil", "firmansah"]);
+
+        await redis.del("names");
+    });
+
+    it("should support sorted set", async () => {
+        await redis.zadd("names", 100, "ade")
+        await redis.zadd("names", 85, "nafil")
+        await redis.zadd("names", 95, "firmansah")
+
+        expect(await redis.zcard("names")).toBe(3);
+        const names = await redis.zrange("names", 0, -1);
+        expect(names).toEqual(["nafil", "firmansah", "ade"]);
+
+        expect(await redis.zpopmax("names")).toEqual(["ade", "100"]);
+        expect(await redis.zpopmin("names")).toEqual(["nafil", "85"]);
+        expect(await redis.zpopmax("names")).toEqual(["firmansah", "95"]);
+
+        await redis.del("names");
+
     })
 })
