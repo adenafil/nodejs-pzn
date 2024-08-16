@@ -100,5 +100,17 @@ describe("belajar nodejs redis", () => {
         });
 
         await redis.del("user:1");
+    });
+
+    it("should support geo point", async () => {
+        await redis.geoadd("sellers", 112.32647942087574, -7.1040403794892155,"Toko A");
+        await redis.geoadd("sellers", 112.2595314912293,-7.0907533893871975, "Toko B");
+
+
+        const distance = await redis.geodist("sellers", "Toko A", "Toko B", "KM");
+        expect(distance).toBe("7.5357");
+
+        const result = await redis.geosearch("sellers", "fromlonlat",112.34295891125026, -7.065711482107327, "byradius", 10, "KM");
+        expect(result).toEqual(["Toko B", "Toko A"])
     })
 })
