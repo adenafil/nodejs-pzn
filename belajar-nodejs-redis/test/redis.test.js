@@ -33,4 +33,19 @@ describe("belajar nodejs redis", () => {
 
     })
 
+    it("should support list", async () => {
+        await redis.rpush("names", "ade");
+        await redis.rpush("names", "nafil");
+        await redis.rpush("names", "firmansah");
+
+        expect(await redis.llen("names")).toBe(3);
+
+        const names = await redis.lrange("names", 0, -1);
+        expect(names).toEqual(["ade", "nafil", "firmansah"]);
+        expect(await redis.lpop("names")).toBe("ade");
+        expect(await redis.rpop("names")).toBe("firmansah");
+        expect(await redis.llen("names")).toBe(1);
+
+        redis.del("names");
+    })
 })
