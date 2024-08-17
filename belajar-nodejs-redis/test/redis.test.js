@@ -113,4 +113,13 @@ describe("belajar nodejs redis", () => {
         const result = await redis.geosearch("sellers", "fromlonlat",112.34295891125026, -7.065711482107327, "byradius", 10, "KM");
         expect(result).toEqual(["Toko B", "Toko A"])
     })
+
+    it("should support hyper log log", async () => {
+        await redis.pfadd("visitors", "ade", "nafil", "firmansah");
+        await redis.pfadd("visitors", "ade", "budi", "joko");
+        await redis.pfadd("visitors", "budi", "joko", "rully");
+
+        const toal = await redis.pfcount("visitors");
+        expect(toal).toBe(6);
+    })
 })
