@@ -147,4 +147,23 @@ describe("belajar nodejs redis", () => {
         expect(await redis.get("address")).toBe("Indonesia");
     })
 
+    it("should support publish stream", async () => {
+        for (let i = 0; i < 100; i++) {
+            await redis.xadd("members", "*", "name", `Ade ${i}`, "address", "indonesia")
+        }
+    })
+
+    it("should support create cunsomer and cunsomer gruop stream", async () => {
+        await redis.xgroup("CREATE", "members", "group-1", "0")
+        await redis.xgroup("CREATECONSUMER", "members", "group-1", "cunsomer-1")
+        await redis.xgroup("CREATECONSUMER", "members", "group-1", "cunsomer-2")
+    })
+
+    it("should can consume stream", async () => {
+        const result = await redis.xreadgroup("GROUP", "group-1", "cunsomr-1", "COUNT", 30, "BLOCK", 3000, "STREAMS", "members", ">");
+
+        expect(result).not.toBeNull();
+
+        console.info(JSON.stringify(result, null, 2))
+    })
 })
