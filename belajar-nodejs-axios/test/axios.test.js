@@ -18,6 +18,20 @@ describe("HTTP Method", () => {
         timeout: 5000,
     })
 
+    httpClient.interceptors.request.use(
+        async (config) => {
+            console.info(`Send request to ${config.baseURL}${config.url}`);
+            return config;
+        },
+        async (error) => {
+            console.error(`Request Error ${error.message}`);
+            return Promise.reject(error);
+        },
+        {
+            synchronous: false
+        }
+    );
+
     it("support GET Method", async () => {
         const response = await httpClient.get("/");
         expect(response.status).toBe(200);
