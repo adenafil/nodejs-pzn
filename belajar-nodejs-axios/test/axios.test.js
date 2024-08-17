@@ -32,6 +32,22 @@ describe("HTTP Method", () => {
         }
     );
 
+    httpClient.interceptors.response.use(
+        async (response) => {
+            const fullUrl = response.config.baseURL + response.config.url;
+            console.info(`Receive response from ${fullUrl} with body : ${JSON.stringify(response.data)}`);
+            return response;
+        },
+        async (error) => {
+            console.error(`Response Error ${error.message}`);
+            return Promise.reject(error);
+        },
+        {
+            synchronous: false
+        }
+    )
+
+
     it("support GET Method", async () => {
         const response = await httpClient.get("/");
         expect(response.status).toBe(200);
