@@ -133,5 +133,18 @@ describe("belajar nodejs redis", () => {
 
         expect(await redis.get("name")).toBe("ade");
         expect(await redis.get("address")).toBe("Indonesia");
+    });
+
+    it("should support transaction", async () => {
+        const transaction = redis.multi();
+
+        transaction.setex("name", 2, "ade");
+        transaction.setex("address", 2, "Indonesia");
+
+        await transaction.exec();
+
+        expect(await redis.get("name")).toBe("ade");
+        expect(await redis.get("address")).toBe("Indonesia");
     })
+
 })
