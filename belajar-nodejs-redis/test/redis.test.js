@@ -165,5 +165,22 @@ describe("belajar nodejs redis", () => {
         expect(result).not.toBeNull();
 
         console.info(JSON.stringify(result, null, 2))
+    });
+
+    it("should can subscribe pubsub", async () => {
+        redis.subscribe("channel-1")
+
+        redis.on("message", (channel, message) => {
+            console.info(`Receive message from ${channel} with message ${message}`)
+        })
+
+        //wait 60 secs
+        await new Promise(resolve => setTimeout(resolve, 60000))
+    }, 60000)
+
+    it("should can publish pubsub", async () => {
+        for(let i = 0; i < 10; i++) {
+            await redis.publish("channel-1", `Hello World ${i}`)
+        }
     })
 })
