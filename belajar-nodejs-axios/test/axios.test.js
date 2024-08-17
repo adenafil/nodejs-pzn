@@ -131,3 +131,22 @@ describe("HTTP Method", () => {
     })
 
 })
+
+describe("Error Handler", () => {
+    const httpClient = axios.create({
+        baseURL: "https://www.programmerzamannow.com",
+        timeout: 5000,
+        validateStatus: (status) => {
+            return status < 500;
+        }
+    })
+
+    it("should error if 404 not found", async () => {
+        try {
+            await httpClient.get("/not-found");
+        } catch (error) {
+            console.error(`Request Error ${error.message}`);
+            expect(error.response.status).toBe(404);
+        }
+    })
+})
