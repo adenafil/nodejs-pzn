@@ -1,4 +1,5 @@
 import * as axios from 'axios';
+import * as fs from "node:fs";
 
 describe("HTTP Client", () => {
     it("should be supported by axios", async () => {
@@ -35,5 +36,68 @@ describe("HTTP Method", () => {
          expect(response.status).toBe(200);
          expect(response.statusText).toBe("OK");
          expect(response.data.success).toBe(true);
+    });
+
+    it("should support POST method with JSON request body", async () => {
+        const json = {
+            username: "ade",
+            password: "rahasia"
+        }
+
+        const response = await httpClient.post("/", json, {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        });
+
+        expect(response.status).toBe(200);
+    });
+
+    it("should support POST method with TEXT request body", async () => {
+        const text = "Ade Nafil Firmansah";
+
+        const response = await httpClient.post("/", text, {
+            headers: {
+                "Content-Type": "text/plain",
+                "Accept": "text/plain"
+            }
+        });
+
+        expect(response.status).toBe(200);
+    });
+
+    it("should support POST method with FORM request body", async () => {
+        const form = {
+            username: "ade",
+            password: "rahasia"
+        };
+
+        const response = await httpClient.post("/", form, {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            }
+        });
+
+        expect(response.status).toBe(200);
+    });
+
+    it("should support POST method with Multipart request body", async () => {
+        const form = new FormData();
+        form.append("username", "ade");
+        form.append("password", "rahasia");
+
+        const data = fs.readFileSync("image.jpeg");
+        form.append("file", new Blob(data), "image.jpeg");
+
+        const response = await httpClient.post("/", form, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        })
+
+        expect(response.status).toBe(200);
+
     })
+
 })
