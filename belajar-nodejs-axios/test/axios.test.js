@@ -33,5 +33,7 @@ describe("HTTP Method", () => {
          });
 
          expect(response.status).toBe(200);
+         expect(response.statusText).toBe("OK");
+         expect(response.data.success).toBe(true);
     })
 })
