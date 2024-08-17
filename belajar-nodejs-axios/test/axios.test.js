@@ -21,4 +21,17 @@ describe("HTTP Method", () => {
         const response = await httpClient.get("/");
         expect(response.status).toBe(200);
     })
+
+    it("should support GET Method with config", async () => {
+         const response = await httpClient.get("/", {
+             params: {
+                 name: "Ade"
+             },
+             headers: {
+                 "Accept": "application/json"
+             }
+         });
+
+         expect(response.status).toBe(200);
+    })
 })
